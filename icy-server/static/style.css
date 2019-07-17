@@ -1,0 +1,35 @@
+html {
+    font-family: "Source Serif Pro", serif;
+}
+
+.font-family-serif {
+    font-family: Georgia serif;
+}
+
+.container {
+    display: grid;
+    width: 80%;
+    margin: 0 auto;
+    grid-template-columns: 40% 40%;
+    grid-template-rows: auto;
+    grid-template-areas:
+    "header header"
+    "main main";
+}
+
+.header {
+    grid-area: header;
+}
+
+.main {
+    grid-area: main;
+}
+
+.sensor {
+    padding: 1rem 2em;
+    background-color: #efefef;
+}
+
+.display-large {
+    font-size: 56px;
+}

@@ -1,0 +1,36 @@
+<!Doctype html>
+<html>
+
+<head>
+    <title>Mökki kamerat</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+        href="https://fonts.googleapis.com/css?family=Fira+Sans:400,600|Source+Serif+Pro&display=swap"
+        rel="stylesheet"
+    />
+    <link href="/style.css" rel="stylesheet">
+    <script src="https://d3js.org/d3.v4.js" defer></script>
+    <script src="/script.js" defer></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="/motioneye">Kamerat</a>
+        </div>
+        <div class="main">
+            {% for sensor in sensors %}
+            <div class="sensor">
+                <h2>{{ sensor.description }}</h2>
+                <div class="display-large">
+                    {{ sensor.temperature }} °C
+                    {{ sensor.pressure / 1000 }} kPa
+                </div>
+            </div>
+            {% endfor %}
+            <div id="graph"></div>
+        </div>
+    </div>
+</body>
+
+</html>

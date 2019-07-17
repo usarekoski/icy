@@ -1,0 +1,32 @@
+diff --git a/docker/armv7-unknown-linux-gnueabihf/Dockerfile b/docker/armv7-unknown-linux-gnueabihf/Dockerfile
+index 7ad2a4d..415623c 100644
+--- a/docker/armv7-unknown-linux-gnueabihf/Dockerfile
++++ b/docker/armv7-unknown-linux-gnueabihf/Dockerfile
+@@ -1,4 +1,4 @@
+-FROM ubuntu:14.04
++FROM debian:stretch
+ 
+ RUN apt-get update && \
+     apt-get install -y --no-install-recommends \
+@@ -37,6 +37,10 @@ RUN bash /qemu.sh arm linux softmmu
+ COPY dropbear.sh /
+ RUN bash /dropbear.sh
+ 
++RUN apt-get install -y --no-install-recommends \
++    gnupg \
++    dirmngr
++
+ COPY linux-image.sh /
+ RUN bash /linux-image.sh armv7
+ 
+@@ -51,3 +55,10 @@ ENV CARGO_TARGET_ARMV7_UNKNOWN_LINUX_GNUEABIHF_LINKER=arm-linux-gnueabihf-gcc \
+     OPENSSL_LIB_DIR=/openssl/lib \
+     QEMU_LD_PREFIX=/usr/arm-linux-gnueabihf \
+     RUST_TEST_THREADS=1
++
++RUN dpkg --add-architecture armhf && apt-get update
++
++# Install postgresql client library headers for diesel (for pq-sys crate).
++RUN apt-get install -y libpq-dev:armhf
++ENV PQ_LIB_DIR=/usr/lib/arm-linux-gnueabihf \
++    PKG_CONFIG_ALLOW_CROSS=True

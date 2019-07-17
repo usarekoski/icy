@@ -1,0 +1,9 @@
+[Unit]
+Description=icy-pi-client service
+
+[Service]
+ExecStart=/usr/local/bin/icy-pi-client
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

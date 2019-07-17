@@ -1,0 +1,8 @@
+
+[mqtt]
+server = ""
+user = ""
+password = ""
+
+[database]
+url = ""
