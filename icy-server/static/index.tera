@@ -23,8 +23,8 @@
             <div class="sensor">
                 <h2>{{ sensor.description }}</h2>
                 <div class="display-large">
-                    {{ sensor.temperature }} °C
-                    {{ sensor.pressure / 1000 }} kPa
+                    {{ sensor.temperature | round(precision=2) }} °C
+                    {{ sensor.pressure / 1000 | round(precision=2) }} kPa
                 </div>
             </div>
             {% endfor %}

@@ -44,7 +44,7 @@ fn index(conn: DbConn) -> Template {
         .iter()
         .map(|sensor| {
             let res = Measurement::belonging_to(sensor)
-                .order(measurements::timestamp)
+                .order(measurements::timestamp.desc())
                 .first::<Measurement>(&*conn);
 
             match res {
